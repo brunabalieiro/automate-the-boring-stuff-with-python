@@ -1,0 +1,18 @@
+import re, os
+
+# Convert text file to string
+textString = open('C:\\Users\\me\\Desktop\\madlib.txt', 'r')
+content = str(textString.read())
+i = 2
+
+while i == 2:
+    #Search string for expressions ADJECTIVE, NOWN, ADVERB, and VERB.
+    keyRegex = re.compile(r'ADJECTIVE|NOUN|ADVERB|^VERB')
+    keyword = keyRegex.search(content)
+
+    #Upon finding keyword, using if statements test the type of keyword
+    if keyword.group() == 'ADJECTIVE':
+        print('Please enter an adjective:')
+        replacement = str(input())
+        keyRegex.sub(replacement, content)
+        print(content)
